@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All the events in your browser</title>
+</head>
+<body>
+    Do things and open the console to see the events.
+    <script>
+        function monitorEvents(element) {
+            var log = function(e) { console.log(e);};
+            var events = [];
+
+            for(var i in element) {
+                if(i.startsWith("on")) events.push(i.substr(2));
+            }
+            events.forEach(function(eventName) {
+                element.addEventListener(eventName, log);
+            });
+        }
+
+        monitorEvents(document.body);
+    </script>
+</body>
+</html>
